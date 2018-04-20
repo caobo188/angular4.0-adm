@@ -1,14 +1,16 @@
-import { AppPage } from './app.po';
+import { NgStationPage } from './app.po';
 
-describe('my-app App', () => {
-  let page: AppPage;
+describe('ng-station App', () => {
+  let page: NgStationPage;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new NgStationPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display welcome message', done => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    page.getParagraphText()
+      .then(msg => expect(msg).toEqual('Welcome to app!!'))
+      .then(done, done.fail);
   });
 });
